@@ -1,6 +1,11 @@
 
 exports.up = function(knex) {
   return knex.schema
+    .createTable('users', (table) => {
+      table.increments('user_id')
+      table.string('username', 15).unique().notNullable()
+      table.string('password', 15).notNullable()
+    })
     .createTable('categories', (table) => {
       table.increments('category_id')
       table.string('category_name', 128).unique().notNullable()
@@ -20,7 +25,7 @@ exports.up = function(knex) {
     .createTable('ingredients', (table) => {
       table.increments('ingredient_id')
       table.string('ingredient_name', 128).notNullable()
-      table.string('unit', 25).notNullable()
+      table.string('ingredient_unit', 25).notNullable()
     })
     .createTable('steps', (table) => {
       table.increments('step_id')
@@ -61,4 +66,5 @@ exports.down = function(knex) {
     .dropTableIfExists('ingredients')
     .dropTableIfExists('recipes')
     .dropTableIfExists('categories')
+    .dropTableIfExists('users')
 };
