@@ -1,15 +1,15 @@
 const categories = [
-  { categories_name: "Breakfast" },
-  { categories_name: "Lunch" },
-  { categories_name: "Snack" },
-  { categories_name: "Dinner" },
-  { categories_name: "Supper" },
+  { category_name: "Breakfast" },
+  { category_name: "Lunch" },
+  { category_name: "Snack" },
+  { category_name: "Dinner" },
+  { category_name: "Supper" },
 ];
 
 const recipes = [
-  { recipe_name: "Broccoli Pesto Pasta", categories_id: 4 },
-  { recipe_name: "Lemon Chicken", categories_id: 4 },
-  { recipe_name: "Salmon en Papillote", categories_id: 4 },
+  { recipe_name: "Broccoli Pesto Pasta", category_id: 4 },
+  { recipe_name: "Lemon Chicken", category_id: 4 },
+  { recipe_name: "Salmon en Papillote", category_id: 4 },
 ];
 
 const ingredients = [
@@ -21,7 +21,7 @@ const ingredients = [
   { ingredient_name: "Salmon", ingredient_unit: "lbs" },
 ];
 
-const steps_ingredients = [
+const step_ingredients = [
   // Broccoli Pesto Pasta
   { step_id: 2, ingredient_id: 1, quantity: 1 },
   { step_id: 3, ingredient_id: 2, quantity: 1.5 },
@@ -68,5 +68,5 @@ exports.seed = async function (knex) {
   await knex("recipes").insert(recipes);
   await knex("ingredients").insert(ingredients);
   await knex("steps").insert(steps);
-  await knex("steps_ingredients").insert(steps_ingredients);
+  await knex("step_ingredients").insert(step_ingredients);
 };
