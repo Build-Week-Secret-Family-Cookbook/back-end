@@ -23,9 +23,10 @@ const ingredients = [
 
 const step_ingredients = [
   // Broccoli Pesto Pasta
+  { step_id: 1, },
   { step_id: 2, ingredient_id: 1, quantity: 1 },
   { step_id: 3, ingredient_id: 2, quantity: 1.5 },
-  { step_id: 3, ingredient_id: 3, quantity: 2 },
+  { step_id: 4, ingredient_id: 3, quantity: 2 },
   // Lemon Chicken
   { step_id: 5, ingredient_id: 4, quantity: 1 },
   { step_id: 5, ingredient_id: 5, quantity: 0.4 },
@@ -38,10 +39,11 @@ const steps = [
   { step_instructions: " Heat pan", step_number: 1, recipe_id: 1 },
   { step_instructions: "Add broccoli", step_number: 2, recipe_id: 1 },
   {
-    step_instructions: "Add pesto mixed with pasta",
+    step_instructions: "Add pesto to pan, mix with broccoli",
     step_number: 3,
     recipe_id: 1,
   },
+  { step_instructions: "Finally add Pasta to pan and Enjoy that savory green stuff", step_number: 4, recipe_id: 1 },
   // Lemon Chicken
   { step_instructions: " Heat oven", step_number: 1, recipe_id: 2 },
   {

@@ -51,7 +51,6 @@ exports.up = function(knex) {
         .onUpdate('RESTRICT')
       table.integer('ingredient_id')
         .unsigned()
-        .notNullable()
         .references('ingredient_id')
         .inTable('ingredients')
         .onDelete('RESTRICT')
