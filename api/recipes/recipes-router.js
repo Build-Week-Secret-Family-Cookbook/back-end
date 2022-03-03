@@ -4,9 +4,6 @@ const { getRecipeById } = require('./recipes-model');
 const Recipe = require('./recipes-model');
 
 
-router.get('/', (req, res, next) => {
-  res.json('recipe router up')
-})
 
 router.get('/:recipe_id', getRecipeById, (req, res, next)=>{
   const {recipe_id} = req.params
@@ -15,6 +12,10 @@ router.get('/:recipe_id', getRecipeById, (req, res, next)=>{
       res.status(200).json(resource)
   })
   .catch(next)
+})
+
+router.get('/', (req, res, next) => {
+  res.json('recipe router up')
 })
 
 // eslint-disable-next-line no-unused-vars
