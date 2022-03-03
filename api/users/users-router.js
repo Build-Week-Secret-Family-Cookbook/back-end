@@ -11,4 +11,12 @@ router.get('/', async(req, res, next) => {
   }
 })
 
+router.get('/:id', (req, res, next) => {
+  Users.findById(req.params.user_id)
+    .then(user => {
+      res.json(user)
+    })
+    .catch(next)
+})
+
 module.exports = router;
