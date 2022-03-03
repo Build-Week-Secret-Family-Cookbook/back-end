@@ -49,7 +49,13 @@ async function getRecipes() {
   return result;
 }
 
+async function createRecipes(recipe) {
+  const [recipe_id] = await db('recipes').insert(recipe);
+  return getRecipes().where({ recipe_id }).first();
+}
+
 module.exports = {
   getRecipeById,
   getRecipes, 
+  createRecipes
 };

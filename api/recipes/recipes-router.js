@@ -1,6 +1,5 @@
 const router = require('express').Router();
 //import recipe model
-const { getRecipeById,getRecipes } = require('./recipes-model');
 const Recipe = require('./recipes-model');
 
 
@@ -20,6 +19,14 @@ router.get('/', (req, res, next) => {
       res.status(200).json(recipes);
     })
     .catch(next); 
+});
+
+router.post('/', (req, res, next) => {
+  Recipe.createRecipes(req.body)
+    .then(recipes => {
+      res.status(201).json(recipes);
+    })
+    .catch(next);
 });
 
 // eslint-disable-next-line no-unused-vars
