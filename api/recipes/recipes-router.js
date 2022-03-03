@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //import recipe model
-const { getRecipeById } = require('./recipes-model');
+const { getRecipeById,getRecipes } = require('./recipes-model');
 const Recipe = require('./recipes-model');
 
 
@@ -15,8 +15,12 @@ router.get('/:recipe_id', (req, res, next)=>{
 })
 
 router.get('/', (req, res, next) => {
-  res.json('recipe router up')
-})
+  Recipe.getRecipes()
+    .then(recipes => {
+      res.status(200).json(recipes);
+    })
+    .catch(next); 
+});
 
 // eslint-disable-next-line no-unused-vars
 router.use((err, req, res, next)=>{
