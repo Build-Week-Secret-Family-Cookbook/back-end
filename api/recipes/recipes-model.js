@@ -41,24 +41,15 @@ async function getRecipeById(recipe_id) {
     }
   });
   return recipe;
-  // const results = {
-  //     recipe_id: Number(recipe_id),
-  //     scheme_name: recipeRows[0].scheme_name,
-  //     steps: recipeRows[0].step_id
-  //       ? recipeRows.map((step) => {
-  //           return {
-  //             category_id: step.category_id,
-  //             step_id: step.step_id,
-  //             step_number: step.step_number,
-  //             instructions: step.instructions,
-  //           };
-  //         })
-  //       : [],
-  // };
+}
 
-  // return results;
+async function getRecipes() {
+  const result = await db("recipes as r")  
+
+  return result;
 }
 
 module.exports = {
   getRecipeById,
+  getRecipes, 
 };
