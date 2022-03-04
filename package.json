@@ -38,7 +38,8 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.15",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "supertest": "^6.2.2"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
