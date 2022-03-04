@@ -3,7 +3,7 @@ const router = require('express').Router();
 const Recipe = require('./recipes-model');
 
 
-
+//Get by ID
 router.get('/:recipe_id', (req, res, next)=>{
   const {recipe_id} = req.params
   Recipe.getRecipeById(recipe_id)
@@ -13,6 +13,7 @@ router.get('/:recipe_id', (req, res, next)=>{
   .catch(next)
 })
 
+//List
 router.get('/', (req, res, next) => {
   Recipe.getRecipes()
     .then(recipes => {
@@ -21,6 +22,7 @@ router.get('/', (req, res, next) => {
     .catch(next); 
 });
 
+// Add
 router.post('/', (req, res, next) => {
   Recipe.createRecipes(req.body)
     .then(recipes => {
@@ -28,6 +30,30 @@ router.post('/', (req, res, next) => {
     })
     .catch(next);
 });
+
+//Delete
+router.delete('/:recipe_id', (req, res, next) => { 
+  const {recipe_id} = req.params
+  Recipe.deleteRecipes(recipe_id)
+    .then(count => {
+      if (count > 0) {
+        res.status(204).end();
+      } else {
+        res.status(404).json({ message: 'Record not found' });
+      }
+    })
+    .catch(next);
+});
+
+//Update
+router.put('/:recipe_id', async (req, res, next) => {
+  try {
+    const data = await Recipe.updateRecipes(req.params.recipe_id, req.body)
+    res.json(data)
+  } catch (err) {
+    next(err)
+  }
+})
 
 // eslint-disable-next-line no-unused-vars
 router.use((err, req, res, next)=>{

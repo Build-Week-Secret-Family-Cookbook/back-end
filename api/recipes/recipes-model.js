@@ -10,7 +10,7 @@ async function getRecipeById(recipe_id) {
   
 
   const recipe = {
-    recipe_id: result[0].recipe_id,
+    recipe_id: recipe_id,
     recipe_name: result[0].recipe_name,
     ingredients: [],
     steps: [],
@@ -54,9 +54,25 @@ async function createRecipes(recipe) {
   return getRecipes().where({ recipe_id }).first();
 }
 
+function deleteRecipes(recipe_id) {
+  
+  return db('recipes').where({ recipe_id }).del();
+}
+
+async function updateRecipes(recipe_id, recipe) { //{ recipe_name, step_instructions }
+  await db('recipes').where({ recipe_id: recipe_id }).update( recipe); //{ recipe_name, step_instructions }
+  return {
+    recipe,
+    // step_instructions,
+    recipe_id,
+  }
+}
+
 module.exports = {
   getRecipeById,
   getRecipes, 
-  createRecipes
+  createRecipes,
+  updateRecipes,
+  deleteRecipes
 };
 //Tacobell
