@@ -9,6 +9,10 @@ server.use('/api/recipes', recipesRouter)
 server.use('/api/users', usersRouter)
 server.use('/api/auth', authRouter)
 
+server.use('/', (req, res) => {
+  res.json({ message: 'Hello world from the Family Cookbook!'})
+})
+
 server.use((err, req, res, next) => { //eslint-disable-line
   res.status(500).json({
     message: err.message,
